@@ -1,0 +1,134 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-search/paper-search-panel.html">
+<link rel="import" href="../bower_components/iron-icons/maps-icons.html">
+<link rel="import" href="../bower_components/iron-pages/maps-pages.html">
+<link rel="import" href="../bower_components/iron-scroll-threshold/iron-scroll-threshold.html">
+<link rel="import" href="shared-styles.html">
+
+
+
+<dom-module id="my-view1">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+
+      }
+      .padding {
+        padding: 10px;
+      }
+
+
+      paper-tabs {
+        font-family: 'Roboto', 'Noto', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        width: 100%;
+        text-transform: uppercase;
+        margin-bottom: 1px;
+        background: #6f74dd;
+        color: white;
+        --paper-tabs-selection-bar-color:#3949ab;
+      }
+      paper-tabs::shadow #selectionBar {
+        background-color: #00227b;
+      }
+      paper-input {
+        max-width: 400px;
+        margin: auto;
+      }
+      iron-icon, div[suffix] {
+        color: hsl(0, 0%, 50%);
+        margin-right: 12px;
+      }
+      paper-button.indigo {
+        background-color: #00227b;
+        color: white;
+        --paper-button-raised-keyboard-focus: {
+          background-color: var(--paper-pink-a200) !important;
+          color: white !important;
+        };
+      }
+      paper-button.indigo:hover {
+        background-color: var(--paper-indigo-400);
+      }
+    </style>
+
+
+    <paper-tabs selected="{{selected}}">
+      <paper-tab>Cari Rute</paper-tab>
+      <paper-tab>Rute</paper-tab>
+      <paper-tab>Halte</paper-tab>
+    </paper-tabs>
+
+    <div class="padding">
+    <iron-pages selected="{{selected}}">
+      <div>
+        <div style="padding: 10px">
+        <paper-input label="Asal">
+          <iron-icon icon="maps:directions-bus" slot="prefix"></iron-icon>
+        </paper-input>
+        <paper-input label="Tujuan">
+          <iron-icon icon="maps:directions-bus" slot="prefix"></iron-icon>
+        </paper-input>
+        </div>
+
+        <paper-button raised class="indigo"> Cari Rute </paper-button>
+      </div>
+      <div>
+        <paper-search-panel></paper-search-panel>
+
+        <iron-scroll-threshold on-lower-threshold="loadMoreData">
+          <div>AAA</div>
+          <div>AAA</div>
+          <div>AAA</div>
+          <div>AAA</div>
+        </iron-scroll-threshold>
+
+        <div class="card">
+
+          <div class="col-md-1">
+          <div class="circle">1A</div>
+          </div>
+          <div class="col-md-11">
+          <h1>View Two</h1>
+          <p>Ea duis bonorum nec, falli paulo aliquid ei eum.</p>
+
+          </div>
+
+        </div>
+      </div>
+      <div>
+        <paper-search-panel></paper-search-panel>
+
+      </div>
+    </iron-pages>
+    </div>
+
+
+  </template>
+
+  <script>
+    class MyView1 extends Polymer.Element {
+      static get is() { return 'my-view1'; }
+    }
+
+    window.customElements.define(MyView1.is, MyView1);
+
+  
+
+  </script>
+</dom-module>
